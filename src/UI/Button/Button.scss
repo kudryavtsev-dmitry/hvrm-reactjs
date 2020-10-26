@@ -1,0 +1,60 @@
+%default-button{
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: .3s;
+  font-size: 1.1rem;
+  padding: 10px 40px;
+}
+
+
+.primary{
+  @extend %default-button;
+  background-color: #2350fc;
+  &:hover{
+    background-color: #1a3cc1;
+  }
+  &:active{
+    background-color: #203385;
+  }
+}
+
+.secondary{
+  @extend %default-button;
+  background-color: #cfcfcf;
+  &:hover{
+    background-color: #989898;
+  }
+  &:active{
+    background-color: #7a7a7a;
+
+  }
+}
+
+.confirm{
+  @extend %default-button;
+  background-color: #4aa61f;
+  &:hover{
+    background-color: #418f1b;
+  }
+  &:active{
+    background-color: #1b5604;
+  }
+}
+
+.error{
+  @extend %default-button;
+  background-color: #c60000;
+  &:hover{
+    background-color: #960101;
+  }
+  &:active{
+    background-color: #790000;
+  }
+}
+
+
+
