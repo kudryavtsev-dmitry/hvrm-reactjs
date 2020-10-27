@@ -1,5 +1,5 @@
 import React from "react";
-import './Button.scss'
+import 'components/UI/Button/Button.scss'
 
 
 export const Button = ({color,  ...props}) => {

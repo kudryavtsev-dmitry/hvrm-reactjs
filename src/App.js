@@ -1,12 +1,12 @@
 import React from 'react'
 import './App.scss'
-import Auth from './components/Auth'
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom'
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import Registration from './components/Registration'
 import Layout from "./components/Layout/Layout";
 import {useSelector} from "react-redux";
+import AuthModule from "modules/AuthModule/AuthModule";
+import RegistrationModule from 'modules/AuthModule/RegistrationModule'
 
 
 const App = () => {
@@ -23,8 +23,8 @@ const App = () => {
                         </Switch>
                         :
                         <Switch>
-                            <Route path="/auth" component={Auth}/>
-                            <Route path="/registration" component={Registration}/>
+                            <Route path="/auth" component={AuthModule}/>
+                            <Route path="/registration" component={RegistrationModule}/>
                             <Redirect to="/auth"/>
                         </Switch>
                 }

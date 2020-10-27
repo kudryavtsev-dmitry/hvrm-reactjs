@@ -1,41 +1,42 @@
 import React from 'react'
-import './Auth.scss'
-import { Form, Formik } from 'formik'
-import { Input } from '../../UI/Input/Input'
-import { Button } from '../../UI/Button/Button'
-import authSchema from './yup'
+import 'components/Auth/Auth.scss'
+import { Input } from 'components/UI/Input/Input'
+import { Button } from 'components/UI/Button/Button'
 import { NavLink } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import {authUser} from "../../redux-toolkit/auth/actions/authUser";
 
-const Auth = () => {
-  const dispatch = useDispatch()
+
+const Auth = ({ formik }) => {
 
   return (
     <div className="Auth-container">
       <h1>Authorization</h1>
-      <Formik
-        initialValues={{
-          login: '',
-          password: '',
-        }}
-        validationSchema={authSchema}
-        onSubmit={(values) => dispatch(authUser(values))}
-      >
-        {({ isSubmitting }) => (
-          <Form className="Auth-form">
-            <Input name="login" label="Login" />
-            <Input name="password" type="password" label="Password" />
-            <Button color="primary" type="submit" disabled={isSubmitting}>
-              Enter
-            </Button>
-            <div>
-              Not registered?
-              <NavLink to="/registration">Registration</NavLink>
-            </div>
-          </Form>
-        )}
-      </Formik>
+      <form className="Auth-form" onSubmit={formik.onSubmit}>
+        <Input
+          name="login"
+          label="Login"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          error={formik.errors.login}
+          touched={formik.touched.login}
+          onBlur={formik.handleBlur}
+        />
+        <Input
+          name="password"
+          type="password"
+          label="Password"
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          error={formik.errors.password}
+          touched={formik.touched.password}
+          onBlur={formik.handleBlur} />
+        <Button color="primary" type="submit">
+          Enter
+        </Button>
+        <div>
+          Not registered?
+          <NavLink to="/registration">Registration</NavLink>
+        </div>
+      </form>
     </div>
   )
 }
