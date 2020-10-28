@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useFormik } from 'formik'
 import registrationSchema from 'components/Registration/yup'
-import { registration } from 'redux-toolkit/auth/actions/registration'
+import { registration } from 'modules/AuthModule/asyncActions/registration'
 import Registration from 'components/Registration'
 
 const RegistrationModule = () => {

@@ -1,8 +1,9 @@
 import React from 'react'
 import 'components/Auth/Auth.scss'
+
+import { NavLink } from 'react-router-dom'
 import { Input } from 'components/UI/Input/Input'
 import { Button } from 'components/UI/Button/Button'
-import { NavLink } from 'react-router-dom'
 
 
 const Auth = ({ formik }) => {

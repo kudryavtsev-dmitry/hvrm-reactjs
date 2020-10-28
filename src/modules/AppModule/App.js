@@ -1,9 +1,9 @@
 import React from 'react'
-import './App.scss'
+import 'modules/AppModule/App.scss'
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom'
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import Layout from "./components/Layout/Layout";
+import Layout from "components/Layout/Layout";
 import {useSelector} from "react-redux";
 import AuthModule from "modules/AuthModule/AuthModule";
 import RegistrationModule from 'modules/AuthModule/RegistrationModule'

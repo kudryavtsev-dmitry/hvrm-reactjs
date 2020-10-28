@@ -1,7 +1,7 @@
-import api from "../../../constants/api";
-import {ToastSuccess} from "../../../components/Toasts/ToastSuccess";
-import {ToastError} from "../../../components/Toasts/ToasError";
-import {authError, authSuccess} from "../auth.slice";
+import api from "utils/services/api";
+import {ToastSuccess} from "components/Toasts/ToastSuccess";
+import {ToastError} from "components/Toasts/ToasError";
+import {authError, authSuccess} from "modules/AuthModule/auth.slice";
 
 
 export const registration = (values) => async (dispatch) => {

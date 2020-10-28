@@ -1,5 +1,5 @@
-import {combineReducers, configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
-import authSlice from './auth/auth.slice'
+import {configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
+import authSlice from 'modules/AuthModule/auth.slice'
 
 const middleware = getDefaultMiddleware({
   immutableCheck: false,

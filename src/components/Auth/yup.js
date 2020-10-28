@@ -1,5 +1,5 @@
 import * as Yup from 'yup'
-import { loginRegExp, passRegExp } from '../../constants/regExps'
+import { loginRegExp, passRegExp } from 'utils/validation/regExps'
 
 const authSchema = Yup.object().shape({
   login: Yup.string()

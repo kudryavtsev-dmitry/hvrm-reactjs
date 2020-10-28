@@ -1,7 +1,7 @@
-import api from "../../../constants/api";
-import {authError, authLoading, authSuccess} from "../auth.slice";
-import {ToastError} from "../../../components/Toasts/ToasError";
-import {ToastSuccess} from "../../../components/Toasts/ToastSuccess";
+import api from "utils/services/api";
+import {authError, authLoading, authSuccess} from "modules/AuthModule/auth.slice";
+import {ToastError} from "components/Toasts/ToasError";
+import {ToastSuccess} from "components/Toasts/ToastSuccess";
 
 export const authUser = (values) => async (dispatch) => {
     try {
