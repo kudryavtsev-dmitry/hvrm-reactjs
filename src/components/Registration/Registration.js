@@ -9,7 +9,7 @@ const Registration = ({formik}) => (
 
   <div className="Registration-container">
     <h1>Registration</h1>
-    <form className="Registration-form">
+    <form className="Registration-form" onSubmit={formik.handleSubmit}>
       <Input
         name="login"
         label="Login"

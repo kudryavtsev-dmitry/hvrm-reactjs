@@ -11,7 +11,9 @@ const Auth = ({ formik }) => {
   return (
     <div className="Auth-container">
       <h1>Authorization</h1>
-      <form className="Auth-form" onSubmit={formik.onSubmit}>
+      <form className="Auth-form" onSubmit={event => {
+        event.preventDefault()
+        formik.handleSubmit()}}>
         <Input
           name="login"
           label="Login"
@@ -30,7 +32,7 @@ const Auth = ({ formik }) => {
           error={formik.errors.password}
           touched={formik.touched.password}
           onBlur={formik.handleBlur} />
-        <Button color="primary" type="submit">
+        <Button color="primary" disabled ={formik.isSubmitting} type ='submit'>
           Enter
         </Button>
         <div>
