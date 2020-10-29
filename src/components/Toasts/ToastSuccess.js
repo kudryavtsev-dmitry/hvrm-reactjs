@@ -1,14 +1,14 @@
-import {toast} from "react-toastify";
+import { toast } from 'react-toastify'
 
-
-export const ToastSuccess = (message) =>{
-    toast.success(`${message}`, {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-    })
+const ToastSuccess = (message) => {
+  toast.success(`${message}`, {
+    position: 'top-right',
+    autoClose: 5000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  })
 }
+export default ToastSuccess

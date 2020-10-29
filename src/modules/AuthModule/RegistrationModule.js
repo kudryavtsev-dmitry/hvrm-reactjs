@@ -3,10 +3,9 @@ import { connect } from 'react-redux'
 import { useFormik } from 'formik'
 import registrationSchema from 'components/Registration/yup'
 import { registration } from 'modules/AuthModule/asyncActions/registration'
-import Registration from 'components/Registration'
+import { Registration } from 'components/Registration'
 
 const RegistrationModule = ({ registration }) => {
-
   const formik = useFormik({
     initialValues: {
       login: '',
@@ -16,16 +15,16 @@ const RegistrationModule = ({ registration }) => {
       lastName: '',
     },
     validationSchema: registrationSchema,
-    onSubmit: values => registration(values),
+    onSubmit: (values) => registration(values),
   })
-  return (
-    <Registration formik={formik} />
-  )
+  return <Registration formik={formik} />
 }
 
 const mapDispatchToProps = {
   registration,
 }
 
-export default connect(null, mapDispatchToProps)(RegistrationModule)
-
+export default connect(
+  null,
+  mapDispatchToProps,
+)(RegistrationModule)

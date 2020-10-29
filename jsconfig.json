@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
-    "baseUrl": "src"
+    "jsx": "react",
+    "baseUrl": "src",
+    "checkJs":true,
+    "paths": {
+      "ui":["components/UI"]
+    }
   },
   "include": ["src"]
 }
