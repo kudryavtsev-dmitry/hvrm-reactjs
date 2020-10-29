@@ -1,15 +1,14 @@
 import React from 'react'
-import './Auth.scss'
+import classes from './Auth.module.scss'
 import { NavLink } from 'react-router-dom'
-import { Button } from 'ui/Button'
-import { Input } from 'ui/Input'
+import { Input, Button } from 'components/UI'
 
 const AuthComponent = ({ formik }) => {
   return (
-    <div className="Auth-container">
+    <div className={classes.container}>
       <h1>Authorization</h1>
       <form
-        className="Auth-form"
+        className={classes.form}
         onSubmit={(event) => {
           event.preventDefault()
           formik.handleSubmit()

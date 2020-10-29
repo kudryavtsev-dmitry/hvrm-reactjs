@@ -1,2 +1,1 @@
-export {default} from './AuthModule'
-export {default} from './RegistrationModule'
+export { default as AuthModule } from './AuthModule'

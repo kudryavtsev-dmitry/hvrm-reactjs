@@ -1,16 +1,12 @@
 import React from 'react'
-import './Registration.scss'
+import classes from './Registration.module.scss'
 import { NavLink } from 'react-router-dom'
-import { Input } from 'components/UI/Input'
-import { Button } from 'components/UI/Button'
+import { Input, Button } from 'components/UI'
 
 const RegistrationComponent = ({ formik }) => (
-  <div className="Registration-container">
+  <div className={classes.container}>
     <h1>Registration</h1>
-    <form
-      className="Registration-form"
-      onSubmit={formik.handleSubmit}
-    >
+    <form onSubmit={formik.handleSubmit}>
       <Input
         name="login"
         label="Login"

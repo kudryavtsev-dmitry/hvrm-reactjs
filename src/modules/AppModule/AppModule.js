@@ -1,5 +1,5 @@
 import React from 'react'
-import 'modules/AppModule/App.scss'
+import classes from './App.module.scss'
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,7 +10,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { Layout } from 'components/Layout'
 import AuthModule from 'modules/AuthModule/AuthModule'
-import RegistrationModule from 'modules/AuthModule/RegistrationModule'
+import { RegistrationModule } from 'modules'
 import { connect } from 'react-redux'
 
 const AppModule = ({ auth }) => {
@@ -18,7 +18,7 @@ const AppModule = ({ auth }) => {
 
   return (
     <Router>
-      <div className="App-container">
+      <div className={classes.container}>
         {isAuth ? (
           <Switch>
             <Route path="/" component={Layout} />

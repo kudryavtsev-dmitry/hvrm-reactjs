@@ -1,28 +1,22 @@
 import React from 'react'
-import './Input.scss'
+import classes from './Input.module.scss'
 
- const Input = ({
-  label,
-  touched,
-  error,
-  ...props
-}) => {
-  console.log('touched', touched, 'error', error)
+const Input = ({ label, touched, error, ...props }) => {
   return (
-    <div className="Input-container">
-      <label className="Input-label">
+    <div className={classes.container}>
+      <label className={classes.label}>
         {label}
         <input
           {...props}
           className={
             touched && error
-              ? 'Input-error Input-place'
-              : 'Input-place'
+              ? classes.error + ' ' + classes.place
+              : classes.place
           }
         />
       </label>
       {touched && error ? (
-        <div className="Input-span">{error}</div>
+        <div className={classes.span}>{error}</div>
       ) : null}
     </div>
   )
