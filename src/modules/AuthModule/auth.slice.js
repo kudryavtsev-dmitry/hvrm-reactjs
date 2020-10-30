@@ -3,9 +3,11 @@ import { createSlice } from '@reduxjs/toolkit'
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    login: localStorage.getItem('user') &&
+    login:
+      localStorage.getItem('user') &&
       JSON.parse(localStorage.getItem('user')).login,
-    token: localStorage.getItem('user') &&
+    token:
+      localStorage.getItem('user') &&
       JSON.parse(localStorage.getItem('user')).jwt,
     isAuth: Boolean(localStorage.getItem('user')),
     errorStatus: null,
@@ -16,21 +18,23 @@ const authSlice = createSlice({
     authSuccess(state, action) {
       state.login = action.payload.login
       state.token = action.payload.jwt
-      state.loadig = false
+      state.loading = false
       state.isAuth = true
     },
     authError(state, action) {
-      state.loadig = false
+      state.loading = false
       state.errorStatus = action.payload
     },
     authLoading(state) {
-      state.loadig = true
+      state.loading = true
     },
   },
 })
 
 export default authSlice.reducer
 
-export const { authSuccess, authLoading, authError } = authSlice.actions
-
-
+export const {
+  authSuccess,
+  authLoading,
+  authError,
+} = authSlice.actions

@@ -12,6 +12,7 @@ import { Layout } from 'components/Layout'
 import AuthModule from 'modules/AuthModule/AuthModule'
 import { RegistrationModule } from 'modules'
 import { connect } from 'react-redux'
+import { Header } from 'components/Header'
 
 const AppModule = ({ auth }) => {
   const isAuth = auth.isAuth
@@ -19,6 +20,7 @@ const AppModule = ({ auth }) => {
   return (
     <Router>
       <div className={classes.container}>
+        <Header />
         {isAuth ? (
           <Switch>
             <Route path="/" component={Layout} />
