@@ -1,11 +1,7 @@
-import React from "react";
-import 'components/UI/Button/Button.scss'
+import React from 'react'
+import classes from './Button.module.scss'
 
-
-export const Button = ({color,  ...props}) => {
-
-
-  return(
-    <button className={color} {...props}/>
-  )
+const Button = ({ color, ...props }) => {
+  return <button className={classes[color]} {...props} />
 }
+export default Button

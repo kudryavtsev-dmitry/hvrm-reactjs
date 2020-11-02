@@ -1,6 +1,15 @@
 {
-  "compilerOptions": {
-    "baseUrl": "src"
-  },
-  "include": ["src"]
+    "compilerOptions": {
+        "baseUrl": "src",
+        "checkJs": true,
+        "jsx": "react",
+        "module": "commonJS",
+        "moduleResolution": "node",
+        "paths": {
+            "ui": ["components/UI"]
+        },
+        "target": "es6"
+    },
+    "exclude": [".idea", "node_modules", "public"],
+    "include": ["src"]
 }

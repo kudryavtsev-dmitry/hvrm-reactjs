@@ -1,16 +1,19 @@
 import React from 'react'
-import 'components/Auth/Auth.scss'
-import { Input } from 'components/UI/Input/Input'
-import { Button } from 'components/UI/Button/Button'
+import classes from './Auth.module.scss'
 import { NavLink } from 'react-router-dom'
+import { Input, Button } from 'components/UI'
 
-
-const Auth = ({ formik }) => {
-
+const AuthComponent = ({ formik }) => {
   return (
-    <div className="Auth-container">
+    <div className={classes.container}>
       <h1>Authorization</h1>
-      <form className="Auth-form" onSubmit={formik.onSubmit}>
+      <form
+        className={classes.form}
+        onSubmit={(event) => {
+          event.preventDefault()
+          formik.handleSubmit()
+        }}
+      >
         <Input
           name="login"
           label="Login"
@@ -28,8 +31,13 @@ const Auth = ({ formik }) => {
           onChange={formik.handleChange}
           error={formik.errors.password}
           touched={formik.touched.password}
-          onBlur={formik.handleBlur} />
-        <Button color="primary" type="submit">
+          onBlur={formik.handleBlur}
+        />
+        <Button
+          color="primary"
+          disabled={formik.isSubmitting}
+          type="submit"
+        >
           Enter
         </Button>
         <div>
@@ -40,4 +48,4 @@ const Auth = ({ formik }) => {
     </div>
   )
 }
-export default Auth
+export default AuthComponent

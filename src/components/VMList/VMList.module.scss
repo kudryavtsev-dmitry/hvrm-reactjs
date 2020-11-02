@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    cursor: pointer;
+    width: 10%;
+    flex-wrap: nowrap;
+    margin-top: 20px;
+}
+
+.vm{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+    padding: 10px;
+    img {
+        width: 200px;
+        height: 120px;
+    }
+}
+.online {
+    color: green;
+}
+
+.offline {
+    color: #b30000;
+}

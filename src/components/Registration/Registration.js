@@ -1,15 +1,12 @@
 import React from 'react'
-import './Registration.scss'
-import { Input } from '../UI/Input/Input'
-import { Button } from '../UI/Button/Button'
-import {NavLink} from "react-router-dom";
+import classes from './Registration.module.scss'
+import { NavLink } from 'react-router-dom'
+import { Input, Button } from 'components/UI'
 
-
-const Registration = ({formik}) => (
-
-  <div className="Registration-container">
+const RegistrationComponent = ({ formik }) => (
+  <div className={classes.container}>
     <h1>Registration</h1>
-    <form className="Registration-form">
+    <form onSubmit={formik.handleSubmit}>
       <Input
         name="login"
         label="Login"
@@ -27,7 +24,8 @@ const Registration = ({formik}) => (
         onChange={formik.handleChange}
         error={formik.errors.password}
         touched={formik.touched.password}
-        onBlur={formik.handleBlur} />
+        onBlur={formik.handleBlur}
+      />
       <Input
         name="email"
         type="email"
@@ -37,7 +35,7 @@ const Registration = ({formik}) => (
         error={formik.errors.email}
         touched={formik.touched.email}
         onBlur={formik.handleBlur}
-        />
+      />
       <Input
         name="firstName"
         label="First Name"
@@ -56,7 +54,7 @@ const Registration = ({formik}) => (
         touched={formik.touched.lastName}
         onBlur={formik.handleBlur}
       />
-      <Button color="primary" type="submit" >
+      <Button color="primary" type="submit">
         Registration
       </Button>
       <div>
@@ -67,4 +65,4 @@ const Registration = ({formik}) => (
   </div>
 )
 
-export default Registration
+export default RegistrationComponent
