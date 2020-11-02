@@ -5,17 +5,26 @@
     flex-wrap: nowrap;
     margin-top: 20px;
 }
+.wrapper{
+    display: flex;
+    flex-direction: column;
+}
 
 .vm{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin: 20px;
-    padding: 10px;
+    margin: 20px 20px 0 20px;
+    padding: 10px 10px 0 10px;
+    p{
+        overflow: hidden;
+        white-space: nowrap;
+
+    }
     img {
         width: 200px;
-        height: 120px;
+        height: 200px;
     }
 }
 .online {
