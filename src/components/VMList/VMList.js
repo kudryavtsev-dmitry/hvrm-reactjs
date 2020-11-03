@@ -4,6 +4,7 @@ import vmImage from 'images/vm.png'
 import { Modal } from 'components/UI/Modal'
 import { VMInfoModule } from 'modules'
 import Buttons from './Buttons/Buttons'
+import { Loader } from 'components/UI'
 
 const VMList = ({
   vm,
@@ -12,14 +13,20 @@ const VMList = ({
   handleOpenModal,
   handleCloseModal,
   selectedVM,
+  startButtonClick,
+  stopButtonClick,
+  suspendButtonClick,
+  resumeButtonClick,
+  saveButtonClick,
+  shutdownVM,
+  restartVM,
 }) => {
   return (
     <div className={classes.container}>
       {vm &&
         vm.map((machine, index) => (
-          <div className={classes.wrapper}>
+          <div className={classes.wrapper} key={index}>
             <div
-              key={index}
               className={classes.vm}
               onClick={() => handleOpenModal(machine)}
             >
@@ -35,7 +42,16 @@ const VMList = ({
                 {getStatus(machine.State)}
               </p>
             </div>
-            <Buttons state={machine.State} />
+            <Buttons
+              machine={machine}
+              startButtonClick={startButtonClick}
+              stopButtonClick={stopButtonClick}
+              suspendButtonClick={suspendButtonClick}
+              resumeButtonClick={resumeButtonClick}
+              saveButtonClick={saveButtonClick}
+              shutdownVM={shutdownVM}
+              restartVM={restartVM}
+            />
           </div>
         ))}
       <Modal open={isOpen} onCLose={handleCloseModal}>
