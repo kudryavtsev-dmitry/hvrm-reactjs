@@ -3,14 +3,16 @@ import { Loader } from 'components/UI'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { getVM } from './asyncActions'
-import { startVM } from './asyncActions'
-import { stopVM } from './asyncActions'
-import { suspendVM } from './asyncActions'
-import { resumeVM } from './asyncActions'
-import { saveVM } from './asyncActions'
-import { shutdownVM } from './asyncActions'
-import { restartVM } from './asyncActions'
+import {
+  getVM,
+  startVM,
+  stopVM,
+  suspendVM,
+  resumeVM,
+  saveVM,
+  shutdownVM,
+  restartVM,
+} from './asyncActions'
 
 const VMListModule = ({
   getVM,

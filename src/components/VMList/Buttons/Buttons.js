@@ -1,6 +1,12 @@
 import classes from './Buttons.module.scss'
-import { IconButton } from 'components/UI'
 import React from 'react'
+import { TurnOnButton } from './TurnOnButton'
+import { TurnOffButton } from './TurnOffButton'
+import { ShutDownButton } from './ShutDownButton'
+import { SaveButton } from './SaveButton'
+import { SuspendButton } from './SuspendButton'
+import { RestartButton } from './RestartButton/inedex'
+import { ResumeButton } from './ResumeButton'
 
 export default function Buttons({
   machine,
@@ -15,77 +21,49 @@ export default function Buttons({
   if (machine.State === 3 || machine.State === 6) {
     return (
       <div className={classes.container}>
-        <IconButton onClick={() => startVM(machine.Name)}>
-          <i
-            className="fa fa-power-off"
-            aria-hidden="true"
-          ></i>
-          Turn on
-        </IconButton>
+        <TurnOnButton
+          onClick={() => startVM(machine.Name)}
+        />
       </div>
     )
   } else if (machine.State === 2) {
     return (
       <div className={classes.container}>
-        <IconButton onClick={() => stopVM(machine.Name)}>
-          <i
-            className="fa fa-stop-circle-o"
-            aria-hidden="true"
-          ></i>
-          Turn off
-        </IconButton>
-        <IconButton
+        <TurnOffButton
+          onClick={() => stopVM(machine.Name)}
+        />
+
+        <ShutDownButton
           onClick={() => shutdownVM(machine.Name)}
-        >
-          <i
-            className="fa fa-power-off"
-            aria-hidden="true"
-          ></i>
-          Shut down
-        </IconButton>
-        <IconButton onClick={() => saveVM(machine.Name)}>
-          <i
-            className="fa fa-floppy-o"
-            aria-hidden="true"
-          ></i>
-          Save
-        </IconButton>
-        <IconButton onClick={() => suspendVM(machine.Name)}>
-          <i className="fa fa-pause" aria-hidden="true"></i>
-          Suspend
-        </IconButton>
-        <IconButton onClick={() => restartVM(machine.Name)}>
-          <i className="fa fa-undo" aria-hidden="true"></i>
-          Restart
-        </IconButton>
+        />
+
+        <SaveButton onClick={() => saveVM(machine.Name)} />
+
+        <SuspendButton
+          onClick={() => suspendVM(machine.Name)}
+        />
+
+        <RestartButton
+          onClick={() => restartVM(machine.Name)}
+        />
       </div>
     )
   } else if (machine.State === 9) {
     return (
       <div className={classes.container}>
-        <IconButton onClick={() => stopVM(machine.Name)}>
-          <i
-            className="fa fa-stop-circle-o"
-            aria-hidden="true"
-          ></i>
-          Turn off
-        </IconButton>
+        <TurnOffButton
+          onClick={() => stopVM(machine.Name)}
+        />
 
-        <IconButton onClick={() => saveVM(machine.Name)}>
-          <i
-            className="fa fa-floppy-o"
-            aria-hidden="true"
-          ></i>
-          Save
-        </IconButton>
-        <IconButton onClick={() => resumeVM(machine.Name)}>
-          <i className="fa fa-play" aria-hidden="true"></i>
-          Resume
-        </IconButton>
-        <IconButton onClick={() => restartVM(machine.Name)}>
-          <i className="fa fa-undo" aria-hidden="true"></i>
-          Restart
-        </IconButton>
+        <SaveButton onClick={() => saveVM(machine.Name)} />
+
+        <ResumeButton
+          onClick={() => resumeVM(machine.Name)}
+        />
+
+        <RestartButton
+          onClick={() => restartVM(machine.Name)}
+        />
       </div>
     )
   }
