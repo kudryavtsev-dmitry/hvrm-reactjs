@@ -3,17 +3,17 @@ import { Loader } from 'components/UI'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { getVirtualMachines } from './asyncActions/getVM'
-import { startVM } from './asyncActions/startVM'
-import { stopVM } from './asyncActions/stopVM'
-import { suspendVM } from './asyncActions/suspendVM'
-import { resumeVM } from './asyncActions/resumeVM'
-import { saveVM } from './asyncActions/saveVM'
-import { shutdownVM } from './asyncActions/shutdownVM'
-import { restartVM } from './asyncActions/restartVM'
+import { getVM } from './asyncActions'
+import { startVM } from './asyncActions'
+import { stopVM } from './asyncActions'
+import { suspendVM } from './asyncActions'
+import { resumeVM } from './asyncActions'
+import { saveVM } from './asyncActions'
+import { shutdownVM } from './asyncActions'
+import { restartVM } from './asyncActions'
 
 const VMListModule = ({
-  getVirtualMachines,
+  getVM,
   virtualMachines,
   startVM,
   stopVM,
@@ -42,7 +42,8 @@ const VMListModule = ({
   }
 
   useEffect(() => {
-    getVirtualMachines()
+    getVM()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleOpenModal = (vm) => {
@@ -50,26 +51,6 @@ const VMListModule = ({
     setSelectedVM(vm)
   }
   const handleCloseModal = () => setIsOpen(false)
-
-  const startButtonClick = (name) => {
-    startVM(name)
-  }
-
-  const stopButtonClick = (name) => {
-    stopVM(name)
-  }
-
-  const suspendButtonClick = (name) => {
-    suspendVM(name)
-  }
-
-  const resumeButtonClick = (name) => {
-    resumeVM(name)
-  }
-
-  const saveButtonClick = (name) => {
-    saveVM(name)
-  }
 
   if (virtualMachines.loading) {
     return <Loader />
@@ -83,11 +64,11 @@ const VMListModule = ({
       handleOpenModal={handleOpenModal}
       handleCloseModal={handleCloseModal}
       selectedVM={selectedVM}
-      startButtonClick={startButtonClick}
-      stopButtonClick={stopButtonClick}
-      suspendButtonClick={suspendButtonClick}
-      resumeButtonClick={resumeButtonClick}
-      saveButtonClick={saveButtonClick}
+      startVM={startVM}
+      stopVM={stopVM}
+      suspendVM={suspendVM}
+      resumeVM={resumeVM}
+      saveVM={saveVM}
       shutdownVM={shutdownVM}
       restartVM={restartVM}
     />
@@ -99,7 +80,7 @@ const mapStateToProps = ({ virtualMachines }) => ({
 })
 
 const mapDispatchToProps = {
-  getVirtualMachines,
+  getVM,
   startVM,
   stopVM,
   suspendVM,

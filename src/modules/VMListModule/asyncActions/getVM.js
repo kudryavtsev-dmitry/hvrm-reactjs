@@ -2,9 +2,7 @@ import { ToastSuccess } from 'components'
 import api from 'utils/services/api'
 import { VMLoading, VMLoadSuccess } from '../VMList.slice'
 
-export const getVirtualMachines = () => async (
-  dispatch,
-) => {
+const getVM = () => async (dispatch) => {
   try {
     dispatch(VMLoading())
     const { status, data } = await api.get('vm')
@@ -17,3 +15,4 @@ export const getVirtualMachines = () => async (
     console.log(e)
   }
 }
+export default getVM

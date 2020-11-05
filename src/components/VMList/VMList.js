@@ -4,7 +4,6 @@ import vmImage from 'images/vm.png'
 import { Modal } from 'components/UI/Modal'
 import { VMInfoModule } from 'modules'
 import Buttons from './Buttons/Buttons'
-import { Loader } from 'components/UI'
 
 const VMList = ({
   vm,
@@ -13,11 +12,11 @@ const VMList = ({
   handleOpenModal,
   handleCloseModal,
   selectedVM,
-  startButtonClick,
-  stopButtonClick,
-  suspendButtonClick,
-  resumeButtonClick,
-  saveButtonClick,
+  startVM,
+  stopVM,
+  suspendVM,
+  resumeVM,
+  saveVM,
   shutdownVM,
   restartVM,
 }) => {
@@ -44,11 +43,11 @@ const VMList = ({
             </div>
             <Buttons
               machine={machine}
-              startButtonClick={startButtonClick}
-              stopButtonClick={stopButtonClick}
-              suspendButtonClick={suspendButtonClick}
-              resumeButtonClick={resumeButtonClick}
-              saveButtonClick={saveButtonClick}
+              startVM={startVM}
+              stopVM={stopVM}
+              suspendVM={suspendVM}
+              resumeVM={resumeVM}
+              saveVM={saveVM}
               shutdownVM={shutdownVM}
               restartVM={restartVM}
             />

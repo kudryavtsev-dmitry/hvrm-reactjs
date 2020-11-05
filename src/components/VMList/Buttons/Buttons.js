@@ -4,20 +4,18 @@ import React from 'react'
 
 export default function Buttons({
   machine,
-  startButtonClick,
-  stopButtonClick,
-  suspendButtonClick,
-  resumeButtonClick,
-  saveButtonClick,
+  startVM,
+  stopVM,
+  suspendVM,
+  resumeVM,
+  saveVM,
   shutdownVM,
   restartVM,
 }) {
   if (machine.State === 3 || machine.State === 6) {
     return (
       <div className={classes.container}>
-        <IconButton
-          onClick={() => startButtonClick(machine.Name)}
-        >
+        <IconButton onClick={() => startVM(machine.Name)}>
           <i
             className="fa fa-power-off"
             aria-hidden="true"
@@ -29,9 +27,7 @@ export default function Buttons({
   } else if (machine.State === 2) {
     return (
       <div className={classes.container}>
-        <IconButton
-          onClick={() => stopButtonClick(machine.Name)}
-        >
+        <IconButton onClick={() => stopVM(machine.Name)}>
           <i
             className="fa fa-stop-circle-o"
             aria-hidden="true"
@@ -47,18 +43,14 @@ export default function Buttons({
           ></i>
           Shut down
         </IconButton>
-        <IconButton
-          onClick={() => saveButtonClick(machine.Name)}
-        >
+        <IconButton onClick={() => saveVM(machine.Name)}>
           <i
             className="fa fa-floppy-o"
             aria-hidden="true"
           ></i>
           Save
         </IconButton>
-        <IconButton
-          onClick={() => suspendButtonClick(machine.Name)}
-        >
+        <IconButton onClick={() => suspendVM(machine.Name)}>
           <i className="fa fa-pause" aria-hidden="true"></i>
           Suspend
         </IconButton>
@@ -71,9 +63,7 @@ export default function Buttons({
   } else if (machine.State === 9) {
     return (
       <div className={classes.container}>
-        <IconButton
-          onClick={() => stopButtonClick(machine.Name)}
-        >
+        <IconButton onClick={() => stopVM(machine.Name)}>
           <i
             className="fa fa-stop-circle-o"
             aria-hidden="true"
@@ -81,18 +71,14 @@ export default function Buttons({
           Turn off
         </IconButton>
 
-        <IconButton
-          onClick={() => saveButtonClick(machine.Name)}
-        >
+        <IconButton onClick={() => saveVM(machine.Name)}>
           <i
             className="fa fa-floppy-o"
             aria-hidden="true"
           ></i>
           Save
         </IconButton>
-        <IconButton
-          onClick={() => resumeButtonClick(machine.Name)}
-        >
+        <IconButton onClick={() => resumeVM(machine.Name)}>
           <i className="fa fa-play" aria-hidden="true"></i>
           Resume
         </IconButton>

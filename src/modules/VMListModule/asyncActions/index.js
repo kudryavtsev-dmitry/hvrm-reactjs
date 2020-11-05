@@ -1,0 +1,8 @@
+export { default as getVM } from './getVM'
+export { default as restartVM } from './restartVM'
+export { default as resumeVM } from './resumeVM'
+export { default as saveVM } from './saveVM'
+export { default as shutdownVM } from './shutdownVM'
+export { default as stopVM } from './stopVM'
+export { default as startVM } from './saveVM'
+export { default as suspendVM } from './suspendVM'

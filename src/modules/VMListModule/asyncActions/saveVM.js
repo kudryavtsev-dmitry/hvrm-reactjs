@@ -17,3 +17,4 @@ export const saveVM = (name) => async (dispatch) => {
     console.log(e)
   }
 }
+export default saveVM

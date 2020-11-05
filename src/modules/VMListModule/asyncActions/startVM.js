@@ -2,7 +2,7 @@ import { ToastSuccess } from 'components'
 import api from 'utils/services/api'
 import { VMLoading, VMLoadSuccess } from '../VMList.slice'
 
-export const startVM = (name) => async (dispatch) => {
+const startVM = (name) => async (dispatch) => {
   try {
     dispatch(VMLoading())
     const { status, data } = await api.post('vm/start', {
@@ -17,20 +17,4 @@ export const startVM = (name) => async (dispatch) => {
     console.log(e)
   }
 }
-
-// export const addMessage = (values, id) => async (dispatch, getState) => {
-
-//     try {
-
-//         const { accessToken } = getState().authFormReducer
-
-//         const {status, data} = await api.post(`conversations/${id}/messages`, values, {
-//             headers: { Authorization: "Bearer " + accessToken }});
-
-//         dispatch(addMessSuccess(data))
-
-//     } catch (e) {
-
-//         dispatch(addMessError())
-//     }
-// }
+export default startVM
