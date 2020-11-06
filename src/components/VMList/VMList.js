@@ -3,7 +3,7 @@ import classes from './VMList.module.scss'
 import vmImage from 'images/vm.png'
 import { Modal } from 'components/UI/Modal'
 import { VMInfoModule } from 'modules'
-import Buttons from './Buttons/Buttons'
+import { IconButton } from 'components/UI'
 
 const VMList = ({
   vm,
@@ -12,13 +12,8 @@ const VMList = ({
   handleOpenModal,
   handleCloseModal,
   selectedVM,
-  startVM,
-  stopVM,
-  suspendVM,
-  resumeVM,
-  saveVM,
-  shutdownVM,
-  restartVM,
+  buttons,
+  VMState,
 }) => {
   return (
     <div className={classes.container}>
@@ -30,27 +25,41 @@ const VMList = ({
               onClick={() => handleOpenModal(machine)}
             >
               <img src={vmImage} alt="virtual machine" />
-              <p className={classes.name}>{machine.Name}</p>
-              <p
-                className={
-                  machine.State === 2
-                    ? classes.online
-                    : classes.offline
-                }
-              >
-                {getStatus(machine.State)}
-              </p>
+              <div>
+                <p className={classes.name}>
+                  {machine.Name}
+                </p>
+                <p
+                  className={
+                    machine.State === VMState.online
+                      ? classes.online
+                      : classes.offline
+                  }
+                >
+                  {getStatus(machine.State)}
+                </p>
+              </div>
+
+              <div className={classes.buttons}>
+                {buttons.map((button) => {
+                  if (
+                    button.state.includes(machine.State)
+                  ) {
+                    return (
+                      <IconButton
+                        icon={button.icon}
+                        onClick={(event) => {
+                          event.stopPropagation()
+                          button.handler(machine.Name)
+                        }}
+                      >
+                        {button.text}
+                      </IconButton>
+                    )
+                  } else return null
+                })}
+              </div>
             </div>
-            <Buttons
-              machine={machine}
-              startVM={startVM}
-              stopVM={stopVM}
-              suspendVM={suspendVM}
-              resumeVM={resumeVM}
-              saveVM={saveVM}
-              shutdownVM={shutdownVM}
-              restartVM={restartVM}
-            />
           </div>
         ))}
       <Modal open={isOpen} onCLose={handleCloseModal}>

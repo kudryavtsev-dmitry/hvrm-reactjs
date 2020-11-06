@@ -28,6 +28,62 @@ const VMListModule = ({
   const [isOpen, setIsOpen] = useState(false)
   const [selectedVM, setSelectedVM] = useState({})
 
+  const VMState = {
+    offline: 3,
+    online: 2,
+    suspended: 9,
+    saved: 6,
+  }
+
+  const buttons = [
+    {
+      icon: 'fa fa-power-off',
+      handler: startVM,
+      state: [VMState.offline, VMState.saved],
+      text: 'Power On',
+    },
+    {
+      icon: 'fa fa-stop-circle-o',
+      handler: stopVM,
+      state: [VMState.online, VMState.suspended],
+      text: 'Power Off',
+    },
+    {
+      icon: 'fa fa-power-off',
+      handler: shutdownVM,
+      state: [VMState.online],
+      text: 'Shutdown',
+    },
+    {
+      icon: 'fa fa-pause',
+      handler: suspendVM,
+      state: [VMState.online],
+      text: 'Suspend',
+    },
+    {
+      icon: 'fa fa-play',
+      handler: resumeVM,
+      state: [VMState.suspended],
+      text: 'Resume',
+    },
+    {
+      icon: 'fa fa-floppy-o',
+      handler: saveVM,
+      state: [VMState.suspended, VMState.online],
+      text: 'Save',
+    },
+    {
+      icon: 'fa fa-undo',
+      handler: restartVM,
+      state: [
+        VMState.suspended,
+        VMState.online,
+        VMState.saved,
+      ],
+      text: 'Restart',
+    },
+  ]
+
   const getStatus = (status) => {
     switch (status) {
       case 3:
@@ -66,13 +122,8 @@ const VMListModule = ({
       handleOpenModal={handleOpenModal}
       handleCloseModal={handleCloseModal}
       selectedVM={selectedVM}
-      startVM={startVM}
-      stopVM={stopVM}
-      suspendVM={suspendVM}
-      resumeVM={resumeVM}
-      saveVM={saveVM}
-      shutdownVM={shutdownVM}
-      restartVM={restartVM}
+      buttons={buttons}
+      VMState={VMState}
     />
   )
 }
