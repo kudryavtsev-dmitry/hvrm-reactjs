@@ -1,0 +1,21 @@
+.button {
+    margin: 0;
+    padding: 5px 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    &:hover{
+        .icon{
+            color: navy;
+        }
+    }
+}
+.icon {
+    display: flex;
+    align-items: center;
+        i{
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+}

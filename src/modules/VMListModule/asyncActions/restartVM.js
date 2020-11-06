@@ -2,17 +2,19 @@ import { ToastSuccess } from 'components'
 import api from 'utils/services/api'
 import { VMLoading, VMLoadSuccess } from '../VMList.slice'
 
-const getVM = () => async (dispatch) => {
+const restartVM = (name) => async (dispatch) => {
   try {
     dispatch(VMLoading())
-    const { status, data } = await api.get('vm')
+    const { status, data } = await api.post('vm/restart', {
+      name: name,
+    })
 
     if (status === 200) {
       dispatch(VMLoadSuccess(data))
-      ToastSuccess('Enter success')
+      ToastSuccess(`${name} was restarted`)
     }
   } catch (e) {
     console.log(e)
   }
 }
-export default getVM
+export default restartVM

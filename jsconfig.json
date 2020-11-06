@@ -5,9 +5,6 @@
         "jsx": "react",
         "module": "commonJS",
         "moduleResolution": "node",
-        "paths": {
-            "ui": ["components/UI"]
-        },
         "target": "es6"
     },
     "exclude": [".idea", "node_modules", "public"],
