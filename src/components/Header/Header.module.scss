@@ -5,16 +5,27 @@
     width: 100%;
     top: 0;
     display: flex;
-    img{
-        height: 8vh;
-        background-color: white;
-        margin-left: 20px;
-    }
+   
 }
 .imageWrapper{
     display: flex;
     justify-content: center;
     align-items: center;
+    i{
+      font-size: 3rem;
+      color: white;
+      margin-left: 20px;
+      &:hover{
+        color: #69c3ff;
+        cursor: pointer;
+        transition: 1s;
+        transform: rotate(360deg);
+
+      }
+      &:active{
+        color: #0099ff;
+      }
+    }
 }
 .links{
 
@@ -38,6 +49,26 @@
 .selected {
     color: orchid;
 }
+
+.profile{
+  display: flex;
+  border-radius: 50%;
+  overflow: hidden;
+  height: 7vh;
+  width: 7vh;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -khtml-border-radius: 50%;
+
+  img{
+    height: 100%;
+    width: 100%;
+    display: block;
+
+  }
+}
+
+
 
 @media screen and (max-width: 768px){
     .line{
