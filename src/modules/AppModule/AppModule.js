@@ -20,21 +20,25 @@ const AppModule = ({ auth }) => {
   return (
     <Router>
       <div className={classes.container}>
-        <Header />
-        {isAuth ? (
-          <Switch>
-            <Route path="/" component={Layout} />
-          </Switch>
-        ) : (
-          <Switch>
-            <Route path="/auth" component={AuthModule} />
-            <Route
-              path="/registration"
-              component={RegistrationModule}
-            />
-            <Redirect to="/auth" />
-          </Switch>
-        )}
+        <div className={classes.header}>
+          <Header />
+        </div>
+        <div className={classes.body}>
+          {isAuth ? (
+            <Switch>
+              <Route path="/" component={Layout} />
+            </Switch>
+          ) : (
+            <Switch>
+              <Route path="/auth" component={AuthModule} />
+              <Route
+                path="/registration"
+                component={RegistrationModule}
+              />
+              <Redirect to="/auth" />
+            </Switch>
+          )}
+        </div>
       </div>
       <ToastContainer />
     </Router>

@@ -9,7 +9,7 @@ const getVM = () => async (dispatch) => {
 
     if (status === 200) {
       dispatch(VMLoadSuccess(data))
-      ToastSuccess('Enter success')
+      ToastSuccess('Load success')
     }
   } catch (e) {
     console.log(e)

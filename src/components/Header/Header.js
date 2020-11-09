@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import classes from './Header.module.scss'
-import vmImage from 'images/vm-icon.png'
+import { Dropdown } from 'components/UI'
+import { connect } from 'react-redux'
+import { getVM } from 'modules/VMListModule/asyncActions'
 
-const Header = () => {
+const Header = ({ getVM }) => {
   const [open, setOpen] = useState(false)
 
   const handleHamburgerClick = () => {
     setOpen(!open)
   }
+
   return (
     <div className={classes.container}>
       <div
@@ -20,7 +23,11 @@ const Header = () => {
         <div className={classes.line} />
       </div>
       <div className={classes.imageWrapper}>
-        <img src={vmImage} alt="virtual machine" />
+        <i
+          onClick={getVM}
+          className="fa fa-refresh "
+          aria-hidden="true"
+        ></i>
       </div>
       <div
         className={
@@ -35,14 +42,25 @@ const Header = () => {
         >
           Virtual Machines
         </NavLink>
-        <NavLink to="/www" activeClassName={classes.active}>
-          in development
-        </NavLink>
-        <NavLink to="/w" activeClassName={classes.active}>
-          in development.
+        <Dropdown title="Servers" />
+        <NavLink
+          to="/profile"
+          activeClassName={classes.active}
+        >
+          <div className={classes.profile}>
+            <img
+              className={classes.profileImage}
+              src="https://msplatformht.com/wp-content/uploads/2020/05/cropped-blankprofile-9.png"
+              alt="profile"
+            />
+          </div>
         </NavLink>
       </div>
     </div>
   )
 }
-export default Header
+const mapDisptahToProps = {
+  getVM,
+}
+
+export default connect(null, mapDisptahToProps)(Header)
