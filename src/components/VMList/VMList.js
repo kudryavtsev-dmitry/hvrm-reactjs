@@ -3,7 +3,7 @@ import classes from './VMList.module.scss'
 import vmImage from 'images/vm.png'
 import { Modal } from 'components/UI/Modal'
 import { VMInfoModule } from 'modules'
-import { IconButton } from 'components/UI'
+import { IconButton, Loader } from 'components/UI'
 
 const VMList = ({
   vm,
@@ -14,6 +14,8 @@ const VMList = ({
   selectedVM,
   buttons,
   VMState,
+  updateVM,
+  updatingVM,
 }) => {
   return (
     <div className={classes.container}>
@@ -24,41 +26,63 @@ const VMList = ({
               className={classes.vm}
               onClick={() => handleOpenModal(machine)}
             >
-              <img src={vmImage} alt="virtual machine" />
-              <div>
-                <p className={classes.name}>
-                  {machine.Name}
-                </p>
-                <p
+              <div className={classes.vmWrapper}>
+                <i
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    updateVM(machine.Name, index)
+                  }}
                   className={
-                    machine.State === VMState.online
-                      ? classes.online
-                      : classes.offline
+                    index === updatingVM
+                      ? 'fa fa-refresh' +
+                        ' ' +
+                        classes.disable
+                      : 'fa fa-refresh'
                   }
-                >
-                  {getStatus(machine.State)}
-                </p>
+                  aria-hidden="true"
+                ></i>
+                <img src={vmImage} alt="virtual machine" />
               </div>
+              {index === updatingVM ? (
+                <Loader />
+              ) : (
+                <>
+                  <div>
+                    <p className={classes.name}>
+                      {machine.Name}
+                    </p>
+                    <p
+                      className={
+                        machine.State === VMState.online
+                          ? classes.online
+                          : classes.offline
+                      }
+                    >
+                      {getStatus(machine.State)}
+                    </p>
+                  </div>
 
-              <div className={classes.buttons}>
-                {buttons.map((button) => {
-                  if (
-                    button.state.includes(machine.State)
-                  ) {
-                    return (
-                      <IconButton
-                        icon={button.icon}
-                        onClick={(event) => {
-                          event.stopPropagation()
-                          button.handler(machine.Name)
-                        }}
-                      >
-                        {button.text}
-                      </IconButton>
-                    )
-                  } else return null
-                })}
-              </div>
+                  <div className={classes.buttons}>
+                    {buttons.map((button) => {
+                      if (
+                        button.state.includes(machine.State)
+                      ) {
+                        return (
+                          <IconButton
+                            icon={button.icon}
+                            onClick={(event) => {
+                              event.stopPropagation()
+                              button.handler(machine.Name)
+                            }}
+                          >
+                            {button.text}
+                          </IconButton>
+                        )
+                      } else return null
+                    })}
+                  </div>
+                </>
+              )}
             </div>
           </div>
         ))}

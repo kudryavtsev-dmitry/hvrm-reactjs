@@ -42,7 +42,7 @@ const Header = ({ getVM }) => {
         >
           Virtual Machines
         </NavLink>
-        <Dropdown title="Servers" />
+        <Dropdown title={window.location.host} />
         <NavLink
           to="/profile"
           activeClassName={classes.active}

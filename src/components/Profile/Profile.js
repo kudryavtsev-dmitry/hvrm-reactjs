@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './Profile.module.scss'
 
-function Profile() {
+function Profile({ auth }) {
   return (
     <div className={classes.container}>
       <div className={classes.top}>
@@ -15,12 +15,16 @@ function Profile() {
           {/* <div className={classes.editPhoto}>button</div> */}
         </div>
         <div className={classes.nameContainer}>
-          <p className={classes.name}>John Doe</p>
-          <p className={classes.login}>qwerty</p>
+          <p className={classes.name}>
+            {auth && auth.firstName} {auth && auth.lastName}
+          </p>
+          <p className={classes.login}>{auth.login}</p>
         </div>
       </div>
       <div className={classes.bottom}>
-        <div className={classes.dropdown}>dropdown</div>
+        <div className={classes.dropdown}>
+          {window.location.host}
+        </div>
       </div>
     </div>
   )

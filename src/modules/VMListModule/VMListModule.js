@@ -12,6 +12,7 @@ import {
   saveVM,
   shutdownVM,
   restartVM,
+  updateVM,
 } from './asyncActions'
 
 const VMListModule = ({
@@ -24,6 +25,7 @@ const VMListModule = ({
   saveVM,
   shutdownVM,
   restartVM,
+  updateVM,
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedVM, setSelectedVM] = useState({})
@@ -117,6 +119,7 @@ const VMListModule = ({
   return (
     <VMList
       vm={virtualMachines.virtualMachines}
+      updatingVM={virtualMachines.updatingVM}
       getStatus={getStatus}
       isOpen={isOpen}
       handleOpenModal={handleOpenModal}
@@ -124,6 +127,7 @@ const VMListModule = ({
       selectedVM={selectedVM}
       buttons={buttons}
       VMState={VMState}
+      updateVM={updateVM}
     />
   )
 }
@@ -141,6 +145,7 @@ const mapDispatchToProps = {
   saveVM,
   shutdownVM,
   restartVM,
+  updateVM,
 }
 
 export default connect(

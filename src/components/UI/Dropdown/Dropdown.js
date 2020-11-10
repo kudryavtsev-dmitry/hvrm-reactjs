@@ -17,7 +17,20 @@ function Dropdown({ title, list }) {
         className={classes.header}
         onClick={() => setIsOpen(!isOpen)}
       >
-        <div className={classes.headerTitle}>{title}</div>
+        <div className={classes.headerTitle}>
+          {title}
+          {isOpen ? (
+            <i
+              className="fa fa-caret-up"
+              aria-hidden="true"
+            ></i>
+          ) : (
+            <i
+              className="fa fa-caret-down"
+              aria-hidden="true"
+            ></i>
+          )}
+        </div>
       </div>
       <ul
         className={

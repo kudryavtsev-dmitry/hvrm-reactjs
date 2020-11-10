@@ -18,20 +18,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
     
     img{
         width: auto;
         height: 100%;
     }
-}
-.photoWrapper{
-    position: relative;
-}
-.editPhoto{
-    position: absolute;
-    bottom: 50px;
-    right: 30px;
 }
 .nameContainer{
     text-align: center;

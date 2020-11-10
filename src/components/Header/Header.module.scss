@@ -68,9 +68,7 @@
   }
 }
 
-
-
-@media screen and (max-width: 768px){
+@media screen and (max-width: 853px){
     .line{
       width: 30px;
       height: 3px;
@@ -103,6 +101,6 @@
   
     .open{
       clip-path: circle(1px at 90% -10%);
-      -webkit-clip-path: circle(1200px at 90% -10%);
+      -webkit-clip-path: circle(1400px at 90% -10%);
     }
   }

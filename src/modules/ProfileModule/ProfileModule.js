@@ -2,11 +2,11 @@ import { Profile } from 'components'
 import React from 'react'
 import { connect } from 'react-redux'
 
-export const ProfileModule = () => {
-  return <Profile />
-}
+const ProfileModule = ({ auth }) => <Profile auth={auth} />
 
-const mapStateToProps = (state) => ({})
+const mapStateToProps = ({ auth }) => ({
+  auth,
+})
 
 const mapDispatchToProps = {}
 

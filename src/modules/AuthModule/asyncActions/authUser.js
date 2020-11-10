@@ -17,9 +17,23 @@ export const authUser = (values) => async (dispatch) => {
     )
 
     if (status === 200) {
+      console.log(data)
+
       dispatch(authSuccess(data))
 
-      localStorage.setItem('user', JSON.stringify(data))
+      localStorage.setItem(
+        'jwt',
+        JSON.stringify({ jwt: data.jwt }),
+      )
+      localStorage.setItem(
+        'user',
+        JSON.stringify({
+          login: data.login,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+        }),
+      )
 
       ToastSuccess('Enter success')
     }

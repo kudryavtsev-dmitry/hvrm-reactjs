@@ -32,6 +32,28 @@
         white-space: nowrap;
 
     }
+ 
+}
+
+.vmWrapper{
+    height: 100%;
+    position: relative;
+
+    i{
+        position: absolute;
+        font-size: 1.5rem;
+        color: white;
+        top: 5%;
+        left: 5%;
+        &:hover{
+            color: #69c3ff;
+            transition: 1s;
+            transform: rotate(360deg);
+        }
+        &:active{
+            color: #059bff;
+        }
+    }
     img {
         height: 100%;
     }
@@ -48,6 +70,10 @@
     flex-direction: column;
     justify-content: center;
     margin-right: 20px;
+}
+.disable {
+    pointer-events: none;
+    opacity: 0.4;
 }
 
 @media screen and (max-width: 768px){

@@ -1,1 +1,1 @@
-export { ProfileModule } from './ProfileModule'
+export { default as ProfileModule } from './ProfileModule'
