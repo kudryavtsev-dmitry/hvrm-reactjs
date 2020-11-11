@@ -37,53 +37,58 @@ const VMListModule = ({
     saved: 6,
   }
 
+  const createButton = (icon, handler, state, text) => {
+    return {
+      icon: `fa ${icon}`,
+      handler,
+      state,
+      text,
+    }
+  }
+
   const buttons = [
-    {
-      icon: 'fa fa-power-off',
-      handler: startVM,
-      state: [VMState.offline, VMState.saved],
-      text: 'Power On',
-    },
-    {
-      icon: 'fa fa-stop-circle-o',
-      handler: stopVM,
-      state: [VMState.online, VMState.suspended],
-      text: 'Power Off',
-    },
-    {
-      icon: 'fa fa-power-off',
-      handler: shutdownVM,
-      state: [VMState.online],
-      text: 'Shutdown',
-    },
-    {
-      icon: 'fa fa-pause',
-      handler: suspendVM,
-      state: [VMState.online],
-      text: 'Suspend',
-    },
-    {
-      icon: 'fa fa-play',
-      handler: resumeVM,
-      state: [VMState.suspended],
-      text: 'Resume',
-    },
-    {
-      icon: 'fa fa-floppy-o',
-      handler: saveVM,
-      state: [VMState.suspended, VMState.online],
-      text: 'Save',
-    },
-    {
-      icon: 'fa fa-undo',
-      handler: restartVM,
-      state: [
-        VMState.suspended,
-        VMState.online,
-        VMState.saved,
-      ],
-      text: 'Restart',
-    },
+    createButton(
+      'fa-power-off',
+      startVM,
+      [VMState.offline, VMState.saved],
+      'Power On',
+    ),
+    createButton(
+      'fa-stop-circle-o',
+      stopVM,
+      [VMState.online, VMState.suspended],
+      'Power Off',
+    ),
+    createButton(
+      'fa-power-off',
+      shutdownVM,
+      [VMState.online],
+      'Shutdown',
+    ),
+    createButton(
+      'fa-pause',
+      suspendVM,
+      [VMState.online],
+      'Suspend',
+    ),
+    createButton(
+      'fa-play',
+      resumeVM,
+      [VMState.suspended],
+      'Resume',
+    ),
+    createButton(
+      'fa-floppy-o',
+      saveVM,
+      [VMState.suspended, VMState.online],
+      'Save',
+    ),
+    createButton(
+      'fa-undo',
+      restartVM,
+      [VMState.suspended, VMState.online, VMState.saved],
+      'Restart',
+    ),
   ]
 
   const getStatus = (status) => {

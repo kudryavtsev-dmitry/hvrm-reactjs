@@ -5,6 +5,7 @@ import { VMLoading, VMLoadSuccess } from '../VMList.slice'
 const getVM = () => async (dispatch) => {
   try {
     dispatch(VMLoading())
+
     const { status, data } = await api.get('vm')
 
     if (status === 200) {
@@ -15,4 +16,5 @@ const getVM = () => async (dispatch) => {
     console.log(e)
   }
 }
+
 export default getVM

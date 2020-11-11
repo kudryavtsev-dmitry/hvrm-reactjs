@@ -1,16 +1,23 @@
 import { ToastSuccess } from 'components'
 import api from 'utils/services/api'
-import { VMLoading, VMLoadSuccess } from '../VMList.slice'
+import {
+  updatingVM,
+  VMUpdateSuccess,
+} from '../VMList.slice'
 
-const startVM = (name) => async (dispatch) => {
+const startVM = (name, index) => async (dispatch) => {
   try {
-    dispatch(VMLoading())
+    dispatch(updatingVM(index))
+
     const { status, data } = await api.post('vm/start', {
       name: name,
     })
 
     if (status === 200) {
-      dispatch(VMLoadSuccess(data))
+      console.log(data)
+      dispatch(
+        VMUpdateSuccess({ index: index, data: data }),
+      )
       ToastSuccess(`${name} was started`)
     }
   } catch (e) {
