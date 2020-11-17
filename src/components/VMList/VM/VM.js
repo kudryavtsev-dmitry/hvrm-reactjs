@@ -12,8 +12,9 @@ export const VM = ({
   getStatus,
   renderButtons,
   VMState,
+  handleOpenMemoryModal,
 }) => (
-  <div className={classes.wrapper} key={index}>
+  <div className={classes.wrapper}>
     <div
       className={classes.vm}
       onClick={() => handleOpenModal(machine)}
@@ -26,7 +27,7 @@ export const VM = ({
           }}
           className={
             index === updatingVM
-              ? 'fa fa-refresh' + ' ' + classes.disable
+              ? `fa fa-refresh ${classes.disable}`
               : 'fa fa-refresh'
           }
           aria-hidden="true"
@@ -48,6 +49,22 @@ export const VM = ({
             >
               {getStatus(machine.State)}
             </p>
+            {machine.State === VMState.online ? (
+              <p className={classes.memory}>
+                Memory assigned{' '}
+                {machine.MemoryAssigned / 1024 / 1024} MB
+              </p>
+            ) : (
+              <p
+                className={classes.memory}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  handleOpenMemoryModal(machine, index)
+                }}
+              >
+                Memory settings
+              </p>
+            )}
           </div>
 
           {renderButtons(machine, index)}

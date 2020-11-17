@@ -1,0 +1,76 @@
+.container{
+    font-family: 'Roboto', sans-serif;
+       position: relative;
+    min-width: 400px;
+    min-height: 600px;
+    height: 60vh;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    div{
+        margin-bottom: 20px;
+    }
+    h1{
+        width: 100%;
+        text-align: center;
+    }
+}
+.sturtup{
+    font-size: 1.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    input{
+        width: 100%;
+    }
+    label {
+        padding-left: 10px;
+    }
+}
+.dynamicMemory{
+    display: flex;
+    align-items: center;
+    p{
+        font-size: 1.5rem;
+    }
+    input{
+        font-size: 1.3rem;
+        height: 20px;
+        width: 80px;
+    }
+}
+.priority{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    input{
+        width: 100%;
+    }
+    label{
+        font-size: 1.5rem;
+    }
+
+}
+.saveBtn{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+}
+.switch{
+    font-size: 1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.dynamic{
+
+}
+.disabled {
+        pointer-events: none;
+        opacity: 0.4;
+}

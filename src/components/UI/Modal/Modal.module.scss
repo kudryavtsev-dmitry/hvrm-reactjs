@@ -4,10 +4,28 @@
     left: 50%;
     transform: translate(-50% , -50%);
     background-color: #fff;
-    padding: 50px;
     z-index: 1000;
     border: 2px solid navy;
+    border-radius: 5px;
 
+}
+.content {
+    padding: 50px;
+}
+.header{
+position: relative;
+background-color: navy;
+height: 5vh;
+p{
+    cursor: pointer;
+    height: 100%;
+    color: white;
+    font-size: 2rem;
+    position: absolute;
+    right: 10px;
+    margin: 0;
+    
+}
 }
 .overlay {
     position: fixed;

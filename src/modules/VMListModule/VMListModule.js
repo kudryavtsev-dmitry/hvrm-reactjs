@@ -1,5 +1,6 @@
 import { VMList } from 'components'
 import { Loader } from 'components/UI'
+import getFreeMemory from 'modules/MemoryModule/asyncActions/getFreeMemory'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
@@ -26,9 +27,14 @@ const VMListModule = ({
   shutdownVM,
   restartVM,
   updateVM,
+  getFreeMemory,
 }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const [memoryOpen, setMemoryOpen] = useState(false)
   const [selectedVM, setSelectedVM] = useState({})
+  const [selectedVMIndex, setSelectedVMIndex] = useState(
+    null,
+  )
 
   const VMState = {
     offline: 3,
@@ -45,7 +51,6 @@ const VMListModule = ({
       text,
     }
   }
-
   const buttons = [
     createButton(
       'fa-power-off',
@@ -108,6 +113,7 @@ const VMListModule = ({
 
   useEffect(() => {
     getVM()
+    getFreeMemory()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -116,6 +122,15 @@ const VMListModule = ({
     setSelectedVM(vm)
   }
   const handleCloseModal = () => setIsOpen(false)
+
+  const handleOpenMemoryModal = (machine, index) => {
+    setSelectedVMIndex(index)
+    setSelectedVM(machine)
+    setMemoryOpen(true)
+  }
+  const handleCloseMemoryModal = () => {
+    setMemoryOpen(false)
+  }
 
   if (virtualMachines.loading) {
     return <Loader />
@@ -133,6 +148,10 @@ const VMListModule = ({
       buttons={buttons}
       VMState={VMState}
       updateVM={updateVM}
+      handleOpenMemoryModal={handleOpenMemoryModal}
+      handleCloseMemoryModal={handleCloseMemoryModal}
+      memoryOpen={memoryOpen}
+      selectedVMIndex={selectedVMIndex}
     />
   )
 }
@@ -151,6 +170,7 @@ const mapDispatchToProps = {
   shutdownVM,
   restartVM,
   updateVM,
+  getFreeMemory,
 }
 
 export default connect(

@@ -1,5 +1,9 @@
 .container {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    min-width: 400px;
+    min-height: 600px;
+    height: 60vh;
+    width: 20vw;
+    font-size: 1.5rem;
     div{
         display: flex;
         align-items: center;

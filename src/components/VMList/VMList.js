@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import classes from './VMList.module.scss'
 import { Modal } from 'components/UI/Modal'
-import { VMInfoModule } from 'modules'
+import { MemoryModule, VMInfoModule } from 'modules'
 import { IconButton } from 'components/UI'
 import { VM } from './VM/VM'
 
@@ -16,15 +16,20 @@ const VMList = ({
   VMState,
   updateVM,
   updatingVM,
+  handleOpenMemoryModal,
+  handleCloseMemoryModal,
+  memoryOpen,
+  selectedVMIndex,
 }) => {
   const renderButtons = useCallback(
     (machine, index) => {
       return (
         <div className={classes.buttons}>
-          {buttons.map((button) => {
+          {buttons.map((button, index) => {
             if (button.state.includes(machine.State)) {
               return (
                 <IconButton
+                  key={index}
                   icon={button.icon}
                   onClick={(event) => {
                     event.stopPropagation()
@@ -47,6 +52,7 @@ const VMList = ({
       {vm &&
         vm.map((machine, index) => (
           <VM
+            key={index}
             machine={machine}
             index={index}
             VMState={VMState}
@@ -55,12 +61,22 @@ const VMList = ({
             updateVM={updateVM}
             handleOpenModal={handleOpenModal}
             getStatus={getStatus}
+            handleOpenMemoryModal={handleOpenMemoryModal}
           />
         ))}
       <Modal open={isOpen} onCLose={handleCloseModal}>
         <VMInfoModule
           vm={selectedVM}
           getStatus={getStatus}
+        />
+      </Modal>
+      <Modal
+        open={memoryOpen}
+        onCLose={handleCloseMemoryModal}
+      >
+        <MemoryModule
+          vm={selectedVM}
+          selectedVMIndex={selectedVMIndex}
         />
       </Modal>
     </div>

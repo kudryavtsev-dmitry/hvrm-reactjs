@@ -13,7 +13,7 @@
 
 .primary{
   @extend %default-button;
-  background-color: #2350fc;
+  background-color: navy;
   &:hover{
     background-color: #1a3cc1;
   }

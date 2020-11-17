@@ -20,9 +20,11 @@ const AppModule = ({ auth }) => {
   return (
     <Router>
       <div className={classes.container}>
-        <div className={classes.header}>
-          <Header />
-        </div>
+        {isAuth && (
+          <div className={classes.header}>
+            <Header />
+          </div>
+        )}
         <div className={classes.body}>
           {isAuth ? (
             <Switch>

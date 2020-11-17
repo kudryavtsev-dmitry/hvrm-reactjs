@@ -7,6 +7,7 @@ const VMListSlice = createSlice({
     error: null,
     loading: false,
     updatingVM: null,
+    freeMemory: null,
   },
 
   reducers: {

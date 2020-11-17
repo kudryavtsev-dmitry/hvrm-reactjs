@@ -8,7 +8,12 @@ export default function Modal({ open, children, onCLose }) {
   return ReactDom.createPortal(
     <>
       <div className={classes.overlay} onClick={onCLose} />
-      <div className={classes.modal}>{children}</div>
+      <div className={classes.modal}>
+        <div className={classes.header}>
+          <p onClick={onCLose}>x</p>
+        </div>
+        <div className={classes.content}>{children}</div>
+      </div>
     </>,
     document.getElementById('modal'),
   )

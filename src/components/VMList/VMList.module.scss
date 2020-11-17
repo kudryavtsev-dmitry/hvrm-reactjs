@@ -75,6 +75,12 @@
     pointer-events: none;
     opacity: 0.4;
 }
+.memory{
+    color: #059bff;
+    &:hover{
+        color: #0071bd;
+    }
+}
 
 @media screen and (max-width: 768px){
     .container{
