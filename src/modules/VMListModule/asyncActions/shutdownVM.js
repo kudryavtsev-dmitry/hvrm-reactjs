@@ -1,4 +1,5 @@
 import { ToastSuccess } from 'components'
+import { getFreeMemory } from 'modules/MemoryModule/asyncActions'
 import api from 'utils/services/api'
 import {
   updatingVM,
@@ -13,6 +14,7 @@ const shutdownVM = (name, index) => async (dispatch) => {
     })
 
     if (status === 200) {
+      dispatch(getFreeMemory())
       dispatch(
         VMUpdateSuccess({ index: index, data: data }),
       )

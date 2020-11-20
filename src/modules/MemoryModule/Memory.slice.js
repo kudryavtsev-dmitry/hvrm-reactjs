@@ -4,6 +4,7 @@ const MemorySlice = createSlice({
   name: 'Memory',
   initialState: {
     free: null,
+    total: null,
     startup: null,
     buffer: null,
     priority: null,
@@ -27,7 +28,9 @@ const MemorySlice = createSlice({
       state.loading = true
     },
     ServerMemoryLoadSuccess(state, action) {
-      state.free = action.payload
+      state.free = action.payload.free
+      state.total = action.payload.total
+      state.loading = false
     },
   },
 })

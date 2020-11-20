@@ -1,16 +1,18 @@
 import api from 'utils/services/api'
-import { ServerMemoryLoadSuccess } from '../Memory.slice'
+import {
+  MemoryLoading,
+  ServerMemoryLoadSuccess,
+} from '../Memory.slice'
 
 const getFreeMemory = () => async (dispatch) => {
   try {
+    dispatch(MemoryLoading())
     const { status, data } = await api.get('server/memory')
 
-    console.log(data.OsFreePhysicalMemory)
+    console.log(data)
 
     if (status === 200) {
-      dispatch(
-        ServerMemoryLoadSuccess(data.OsFreePhysicalMemory),
-      )
+      dispatch(ServerMemoryLoadSuccess(data))
     }
   } catch (e) {
     console.log(e)

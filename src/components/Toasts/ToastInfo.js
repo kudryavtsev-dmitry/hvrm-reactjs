@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify'
 
 const ToastSuccess = (message) => {
-  toast.success(`${message}`, {
+  toast.info(`${message}`, {
     position: 'bottom-right',
     autoClose: 2000,
     hideProgressBar: false,

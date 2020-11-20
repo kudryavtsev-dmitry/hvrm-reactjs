@@ -4,6 +4,8 @@ import { Modal } from 'components/UI/Modal'
 import { MemoryModule, VMInfoModule } from 'modules'
 import { IconButton } from 'components/UI'
 import { VM } from './VM/VM'
+import { FreeMemoryBarModule } from 'modules/VMListModule/FreeMemoryBarModule'
+import { HardDiskModule } from 'modules/HardDiskModule'
 
 const VMList = ({
   vm,
@@ -20,16 +22,19 @@ const VMList = ({
   handleCloseMemoryModal,
   memoryOpen,
   selectedVMIndex,
+  handleOpenDiskModal,
+  handleCloseDiskModal,
+  diskOpen,
 }) => {
   const renderButtons = useCallback(
     (machine, index) => {
       return (
         <div className={classes.buttons}>
-          {buttons.map((button, index) => {
+          {buttons.map((button) => {
             if (button.state.includes(machine.State)) {
               return (
                 <IconButton
-                  key={index}
+                  key={button.text}
                   icon={button.icon}
                   onClick={(event) => {
                     event.stopPropagation()
@@ -49,6 +54,7 @@ const VMList = ({
 
   return (
     <div className={classes.container}>
+      <FreeMemoryBarModule />
       {vm &&
         vm.map((machine, index) => (
           <VM
@@ -62,6 +68,7 @@ const VMList = ({
             handleOpenModal={handleOpenModal}
             getStatus={getStatus}
             handleOpenMemoryModal={handleOpenMemoryModal}
+            handleOpenDiskModal={handleOpenDiskModal}
           />
         ))}
       <Modal open={isOpen} onCLose={handleCloseModal}>
@@ -75,6 +82,12 @@ const VMList = ({
         onCLose={handleCloseMemoryModal}
       >
         <MemoryModule
+          vm={selectedVM}
+          selectedVMIndex={selectedVMIndex}
+        />
+      </Modal>
+      <Modal open={diskOpen} onCLose={handleCloseDiskModal}>
+        <HardDiskModule
           vm={selectedVM}
           selectedVMIndex={selectedVMIndex}
         />

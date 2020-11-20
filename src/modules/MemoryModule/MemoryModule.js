@@ -6,6 +6,7 @@ import {
   getMemory,
   dynamicMemory,
 } from './asyncActions'
+import { getDiskData } from '../HardDiskModule/asyncActions'
 
 function MemoryModule({
   vm,
@@ -14,6 +15,7 @@ function MemoryModule({
   addMemory,
   getMemory,
   dynamicMemory,
+  getDiskData,
 }) {
   const [sturtupMemory, setSturtupMemory] = useState(null)
   const [isDynamic, setIsDynamic] = useState(null)
@@ -33,6 +35,7 @@ function MemoryModule({
 
   useEffect(() => {
     getMemory(vm.Name)
+    getDiskData(vm.Name)
   }, [])
   return (
     <Memory
@@ -62,6 +65,7 @@ const mapDispatchToProps = {
   addMemory,
   getMemory,
   dynamicMemory,
+  getDiskData,
 }
 
 const mapStateToProps = ({ memory }) => ({

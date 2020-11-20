@@ -18,7 +18,7 @@ export default function VMInfo({ targetVM, getStatus }) {
       </div>
       <div>
         <p>Memory assigned:</p>
-        {targetVM.MemoryAssigned / 1048576} MB
+        {targetVM.MemoryAssigned} MB
       </div>
       <div>
         <p>Uptime:</p>

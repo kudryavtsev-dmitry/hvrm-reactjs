@@ -34,7 +34,7 @@ export default function Memory({
 
   return (
     <div className={classes.container}>
-      <h1>Memory settings</h1>
+      <h3>Memory</h3>
 
       <div className={classes.sturtup}>
         <input
@@ -43,11 +43,11 @@ export default function Memory({
           name="startupMemory"
           min="0"
           value={sturtupMemory ? sturtupMemory : ''}
-          step="1"
+          step="2"
           onChange={(e) =>
             setSturtupMemory(+e.target.value)
           }
-          max={freeMemory / 1024}
+          max={freeMemory}
         />
         <label htmlFor="startupMemory">
           {sturtupMemory} MB Memory used
@@ -74,7 +74,9 @@ export default function Memory({
       </div>
       <div
         className={
-          !isDynamic ? classes.disabled : undefined
+          !isDynamic
+            ? `${classes.disabled} ${classes.dynamicModule}`
+            : classes.dynamicModule
         }
       >
         <SizeInput

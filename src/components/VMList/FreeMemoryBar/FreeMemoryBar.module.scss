@@ -1,0 +1,74 @@
+.container {
+    width: 750px;
+    height:25px;
+    display: flex;
+    margin-bottom: 50px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.75);
+
+}
+.textContainer{
+    font-family: 'Roboto', sans-serif;
+    width: 750px;
+    min-height: 60px;
+    font-weight: 600;
+    div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        p{
+            margin: 0;
+        }
+
+    }
+    display: flex;
+min-width: 750px;
+justify-content: space-between;
+}
+.virtual{
+    background: linear-gradient(0deg, rgba(16,90,142,1) 0%, rgba(29,161,253,1) 55%, rgba(16,90,142,1) 100%);
+    height: 100%;
+    transition: .3s;
+}
+.used {
+height: 100%;
+    background: linear-gradient(0deg, rgba(0,11,89,1) 0%, rgba(3,30,214,1) 55%, rgba(0,11,89,1) 100%);
+    transition: .3s;
+}
+.free{
+    height: 100%;
+    background: linear-gradient(0deg, rgba(13,87,0,1) 0%, rgba(27,189,0,1) 55%, rgba(13,87,0,1) 100%);
+    transition: .3s;
+}
+
+.loader {
+	height: 100%;
+	width: 100%;
+    background: linear-gradient(0deg, rgba(184,184,184,1) 0%, rgba(224,224,224,1) 55%, rgba(185,184,184,1) 100%);
+}
+
+.loader:before {
+	content: '';
+	display: block;
+    background: linear-gradient(0deg, rgba(16,90,142,1) 0%, rgba(29,161,253,1) 55%, rgba(16,90,142,1) 100%);
+	height: 100%;
+    width: 0px;
+    border-radius: 20px;
+    animation: getWidth 1.5s ease-in infinite;
+}
+
+@keyframes getWidth {
+
+	100% {width: 100%}
+}
+@media screen and (max-width: 768px){
+    .container {
+        width: 350px;
+    }
+    .textContainer{
+        width: 350px;
+        min-width: 350px;
+    }
+}

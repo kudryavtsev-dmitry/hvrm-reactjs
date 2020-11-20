@@ -1,15 +1,14 @@
 import { ToastSuccess } from 'components'
 import api from 'utils/services/api'
-import {
-  updatingVM,
-  VMUpdateSuccess,
-} from '../../VMListModule/VMList.slice'
+import { VMUpdateSuccess } from '../../VMListModule/VMList.slice'
+import { MemoryLoading } from '../Memory.slice'
+import getMemory from './getMemory'
 
 const addMemory = (name, size, index) => async (
   dispatch,
 ) => {
   try {
-    dispatch(updatingVM(index))
+    dispatch(MemoryLoading())
 
     const { status, data } = await api.post(
       'vm/add-memory',
@@ -21,6 +20,7 @@ const addMemory = (name, size, index) => async (
 
     if (status === 200) {
       console.log(data)
+      dispatch(getMemory(name))
       dispatch(
         VMUpdateSuccess({ index: index, data: data }),
       )

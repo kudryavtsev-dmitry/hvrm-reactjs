@@ -31,6 +31,7 @@ const VMListModule = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [memoryOpen, setMemoryOpen] = useState(false)
+  const [diskOpen, setDiskOpen] = useState(false)
   const [selectedVM, setSelectedVM] = useState({})
   const [selectedVMIndex, setSelectedVMIndex] = useState(
     null,
@@ -131,6 +132,14 @@ const VMListModule = ({
   const handleCloseMemoryModal = () => {
     setMemoryOpen(false)
   }
+  const handleOpenDiskModal = (machine, index) => {
+    setSelectedVMIndex(index)
+    setSelectedVM(machine)
+    setDiskOpen(true)
+  }
+  const handleCloseDiskModal = () => {
+    setDiskOpen(false)
+  }
 
   if (virtualMachines.loading) {
     return <Loader />
@@ -151,6 +160,9 @@ const VMListModule = ({
       handleOpenMemoryModal={handleOpenMemoryModal}
       handleCloseMemoryModal={handleCloseMemoryModal}
       memoryOpen={memoryOpen}
+      handleOpenDiskModal={handleOpenDiskModal}
+      handleCloseDiskModal={handleCloseDiskModal}
+      diskOpen={diskOpen}
       selectedVMIndex={selectedVMIndex}
     />
   )

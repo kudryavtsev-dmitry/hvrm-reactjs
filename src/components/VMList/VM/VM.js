@@ -13,6 +13,7 @@ export const VM = ({
   renderButtons,
   VMState,
   handleOpenMemoryModal,
+  handleOpenDiskModal,
 }) => (
   <div className={classes.wrapper}>
     <div
@@ -51,19 +52,29 @@ export const VM = ({
             </p>
             {machine.State === VMState.online ? (
               <p className={classes.memory}>
-                Memory assigned{' '}
-                {machine.MemoryAssigned / 1024 / 1024} MB
+                Memory assigned {machine.MemoryAssigned} MB
               </p>
             ) : (
-              <p
-                className={classes.memory}
-                onClick={(e) => {
-                  e.stopPropagation()
-                  handleOpenMemoryModal(machine, index)
-                }}
-              >
-                Memory settings
-              </p>
+              <>
+                <p
+                  className={classes.memory}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    handleOpenMemoryModal(machine, index)
+                  }}
+                >
+                  Memory settings
+                </p>
+                <p
+                  className={classes.memory}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    handleOpenDiskModal(machine, index)
+                  }}
+                >
+                  Disk settings
+                </p>
+              </>
             )}
           </div>
 

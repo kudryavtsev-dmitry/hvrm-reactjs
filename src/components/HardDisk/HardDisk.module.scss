@@ -1,0 +1,45 @@
+.container {   
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    min-width: 400px;
+    min-height: 600px;
+    height: 60vh;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    h3{
+        width: 100%;
+        font-size: 1.5rem;
+        text-align: center;
+        border-bottom: 1px solid #c7c7c7;
+        padding-bottom: 20px;
+    }
+}
+.sizeInfo{
+    display: flex;
+    font-size: 20px;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid #c7c7c7;
+    div{
+        display: flex;
+        justify-content: center;
+        align-items:center;
+
+        &>:nth-child(1){
+            font-weight: 700;
+            margin-right: 5px;
+        }
+    }
+    // & > :nth-child(1){
+    //     font-weight: 700;
+    }
+    .saveBtn{
+        position: absolute;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        bottom: 0;
+    }
