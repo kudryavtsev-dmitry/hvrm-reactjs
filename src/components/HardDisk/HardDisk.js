@@ -2,7 +2,14 @@ import { Button, Loader } from 'components/UI'
 import React from 'react'
 import classes from './HardDisk.module.scss'
 
-const HardDisk = ({ disk, diskSize, setDiskSize }) => {
+const HardDisk = ({
+  disk,
+  diskSize,
+  setDiskSize,
+  resizeDisk,
+  name,
+  convertDisk,
+}) => {
   if (disk.loading) {
     return (
       <div className={classes.container}>
@@ -37,9 +44,17 @@ const HardDisk = ({ disk, diskSize, setDiskSize }) => {
       <div className={classes.saveBtn}>
         <Button
           color={'primary'}
-          onClick={() => console.log(diskSize)}
+          onClick={() => {
+            resizeDisk(name, +diskSize, disk.path)
+          }}
         >
           Save
+        </Button>
+        <Button
+          color={'primary'}
+          onClick={() => convertDisk(name, disk.path)}
+        >
+          erer
         </Button>
       </div>
     </div>

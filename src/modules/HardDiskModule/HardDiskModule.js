@@ -1,13 +1,19 @@
 import { HardDisk } from 'components/HardDisk'
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { getDiskData } from './asyncActions'
+import {
+  getDiskData,
+  resizeDisk,
+  convertDisk,
+} from './asyncActions'
 
 const HardDiskModule = ({
   vm,
   selectedVMIndex,
   getDiskData,
   disk,
+  resizeDisk,
+  convertDisk,
 }) => {
   const [diskSize, setDiskSize] = useState(null)
 
@@ -20,9 +26,12 @@ const HardDiskModule = ({
 
   return (
     <HardDisk
+      name={vm.Name}
       disk={disk}
       diskSize={diskSize}
       setDiskSize={setDiskSize}
+      resizeDisk={resizeDisk}
+      convertDisk={convertDisk}
     />
   )
 }
@@ -33,6 +42,8 @@ const mapStateToProrps = ({ disk }) => ({
 
 const mapDispatchToProps = {
   getDiskData,
+  resizeDisk,
+  convertDisk,
 }
 export default connect(
   mapStateToProrps,
