@@ -17,8 +17,6 @@ export const authUser = (values) => async (dispatch) => {
     )
 
     if (status === 200) {
-      console.log(data)
-
       dispatch(authSuccess(data))
 
       localStorage.setItem(

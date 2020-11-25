@@ -1,3 +1,4 @@
+import { ToastError } from 'components'
 import api from 'utils/services/api'
 import {
   GetMemorySuccess,
@@ -5,7 +6,6 @@ import {
 } from '../Memory.slice'
 
 const getMemory = (name) => async (dispatch) => {
-  console.log(111111, name)
   try {
     dispatch(MemoryLoading())
 
@@ -20,7 +20,7 @@ const getMemory = (name) => async (dispatch) => {
       dispatch(GetMemorySuccess(data))
     }
   } catch (e) {
-    console.log(e)
+    ToastError('Unknown error')
   }
 }
 
