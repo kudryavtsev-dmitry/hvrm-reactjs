@@ -1,4 +1,4 @@
-import { ToastSuccess } from 'components'
+import { ToastError, ToastSuccess } from 'components'
 import api from 'utils/services/api'
 import {
   updatingVM,
@@ -14,14 +14,13 @@ const updateVM = (name, index) => async (dispatch) => {
     })
 
     if (status === 200) {
-      console.log(data)
       dispatch(
         VMUpdateSuccess({ index: index, data: data }),
       )
       ToastSuccess(`VM ${name} was updated!`)
     }
   } catch (e) {
-    console.log(e)
+    ToastError('Unknown error')
   }
 }
 export default updateVM

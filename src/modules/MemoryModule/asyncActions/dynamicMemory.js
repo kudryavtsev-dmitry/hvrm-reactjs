@@ -1,4 +1,4 @@
-import { ToastSuccess } from 'components'
+import { ToastError, ToastSuccess } from 'components'
 import api from 'utils/services/api'
 import { VMUpdateSuccess } from '../../VMListModule/VMList.slice'
 import { MemoryLoading } from '../Memory.slice'
@@ -37,7 +37,7 @@ const dynamicMemory = (
       ToastSuccess(`VM ${name} was updated!`)
     }
   } catch (e) {
-    console.log(e)
+    ToastError('Unknown error')
   }
 }
 export default dynamicMemory

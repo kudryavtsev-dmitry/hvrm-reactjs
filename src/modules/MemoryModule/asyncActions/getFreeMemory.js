@@ -1,3 +1,4 @@
+import { ToastError } from 'components'
 import api from 'utils/services/api'
 import {
   MemoryLoading,
@@ -9,13 +10,11 @@ const getFreeMemory = () => async (dispatch) => {
     dispatch(MemoryLoading())
     const { status, data } = await api.get('server/memory')
 
-    console.log(data)
-
     if (status === 200) {
       dispatch(ServerMemoryLoadSuccess(data))
     }
   } catch (e) {
-    console.log(e)
+    ToastError('Unknown error')
   }
 }
 

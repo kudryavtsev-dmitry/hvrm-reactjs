@@ -5,24 +5,32 @@ import {
   getDiskData,
   resizeDisk,
   convertDisk,
+  changeType,
 } from './asyncActions'
 
 const HardDiskModule = ({
   vm,
-  selectedVMIndex,
   getDiskData,
   disk,
   resizeDisk,
   convertDisk,
+  changeType,
 }) => {
   const [diskSize, setDiskSize] = useState(null)
+  const [diskType, setDiskType] = useState(null)
 
   useEffect(() => {
     getDiskData(vm.Name)
   }, [])
+
   useEffect(() => {
+    setDiskType(disk.type)
     setDiskSize(disk.vmTotal)
   }, [disk])
+
+  const handleTypeChange = (e) => {
+    setDiskType(+e.target.value)
+  }
 
   return (
     <HardDisk
@@ -32,6 +40,9 @@ const HardDiskModule = ({
       setDiskSize={setDiskSize}
       resizeDisk={resizeDisk}
       convertDisk={convertDisk}
+      handleTypeChange={handleTypeChange}
+      diskType={diskType}
+      changeType={changeType}
     />
   )
 }
@@ -44,6 +55,7 @@ const mapDispatchToProps = {
   getDiskData,
   resizeDisk,
   convertDisk,
+  changeType,
 }
 export default connect(
   mapStateToProrps,

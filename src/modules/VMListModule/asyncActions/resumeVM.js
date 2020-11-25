@@ -1,4 +1,4 @@
-import { ToastSuccess } from 'components'
+import { ToastError, ToastSuccess } from 'components'
 import api from 'utils/services/api'
 import {
   updatingVM,
@@ -19,7 +19,7 @@ const resumeVM = (name, index) => async (dispatch) => {
       ToastSuccess(`${name} was resume`)
     }
   } catch (e) {
-    console.log(e)
+    ToastError('Unknown error')
   }
 }
 

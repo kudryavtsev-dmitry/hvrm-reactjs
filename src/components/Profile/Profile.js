@@ -8,7 +8,7 @@ function Profile({ auth }) {
         <div className={classes.photoWrapper}>
           <div className={classes.photoContainer}>
             <img
-              src="https://i0.wp.com/blackyouthproject.com/wp-content/uploads/2017/04/stevie-steve.jpg?fit=531%2C432"
+              src="https://meetanentrepreneur.lu/wp-content/uploads/2019/08/profil-linkedin-300x300.jpg"
               alt="profile"
             />
           </div>

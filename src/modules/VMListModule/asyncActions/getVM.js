@@ -1,4 +1,4 @@
-import { ToastSuccess } from 'components'
+import { ToastError, ToastSuccess } from 'components'
 import api from 'utils/services/api'
 import { VMLoading, VMLoadSuccess } from '../VMList.slice'
 
@@ -13,7 +13,7 @@ const getVM = () => async (dispatch) => {
       ToastSuccess('Load success')
     }
   } catch (e) {
-    console.log(e)
+    ToastError('Unknown error')
   }
 }
 

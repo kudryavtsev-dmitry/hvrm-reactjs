@@ -21,8 +21,6 @@ const FreeMemoryBarModule = ({
 
   const free = Math.floor(memory.free)
 
-  console.log(memory.loading)
-
   return (
     <FreeMemoryBar
       loading={memory.loading}

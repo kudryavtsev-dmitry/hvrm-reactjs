@@ -1,4 +1,4 @@
-import { ToastSuccess } from 'components'
+import { ToastError, ToastSuccess } from 'components'
 import api from 'utils/services/api'
 import { VMUpdateSuccess } from '../../VMListModule/VMList.slice'
 import { MemoryLoading } from '../Memory.slice'
@@ -19,7 +19,6 @@ const addMemory = (name, size, index) => async (
     )
 
     if (status === 200) {
-      console.log(data)
       dispatch(getMemory(name))
       dispatch(
         VMUpdateSuccess({ index: index, data: data }),
@@ -27,7 +26,7 @@ const addMemory = (name, size, index) => async (
       ToastSuccess(`VM ${name} was updated!`)
     }
   } catch (e) {
-    console.log(e)
+    ToastError('Unknown error')
   }
 }
 export default addMemory

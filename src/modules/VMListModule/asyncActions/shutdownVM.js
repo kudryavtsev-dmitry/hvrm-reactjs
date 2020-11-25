@@ -1,4 +1,4 @@
-import { ToastSuccess } from 'components'
+import { ToastError, ToastSuccess } from 'components'
 import { getFreeMemory } from 'modules/MemoryModule/asyncActions'
 import api from 'utils/services/api'
 import {
@@ -21,7 +21,7 @@ const shutdownVM = (name, index) => async (dispatch) => {
       ToastSuccess(`${name} was shutdown`)
     }
   } catch (e) {
-    console.log(e)
+    ToastError('Unknown error')
   }
 }
 export default shutdownVM

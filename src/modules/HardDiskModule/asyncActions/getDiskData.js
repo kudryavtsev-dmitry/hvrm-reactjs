@@ -1,11 +1,12 @@
+import { ToastError, ToastInfo } from 'components/Toasts'
 import api from 'utils/services/api'
 import {
   GetDiskSuccess,
   DiskLoading,
+  DiskLoadingStopped,
 } from '../HardDisk.slice'
 
 const getDiskData = (name) => async (dispatch) => {
-  console.log(111111, name)
   try {
     dispatch(DiskLoading())
 
@@ -16,13 +17,13 @@ const getDiskData = (name) => async (dispatch) => {
       },
     )
 
-    console.log(data)
-
     if (status === 200) {
       dispatch(GetDiskSuccess(data))
+      ToastInfo(`Disk data was loaded`)
     }
   } catch (e) {
-    console.log(e)
+    ToastError('Unknown error')
+    dispatch(DiskLoadingStopped())
   }
 }
 

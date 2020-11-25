@@ -1,15 +1,16 @@
+import { ToastError, ToastInfo } from 'components/Toasts'
 import apiWithoutTimeout from 'utils/services/apiWithoutTimeout'
 import {
-  DiskLoading,
-  ResizeDiskSuccess,
+  DiskConverting,
+  DiskLoadingStopped,
 } from '../HardDisk.slice'
 import getDiskData from './getDiskData'
 
 const convertDisk = (name, path) => async (dispatch) => {
   try {
-    dispatch(DiskLoading())
+    dispatch(DiskConverting())
 
-    const { status, data } = await apiWithoutTimeout.post(
+    const { status } = await apiWithoutTimeout.post(
       'vm/hard-disk/convert',
       {
         name,
@@ -19,9 +20,11 @@ const convertDisk = (name, path) => async (dispatch) => {
 
     if (status === 200) {
       dispatch(getDiskData(name))
+      ToastInfo(`Disk was converted`)
     }
   } catch (e) {
-    console.log(e)
+    ToastError('Unknown error')
+    dispatch(DiskLoadingStopped())
   }
 }
 
